@@ -47,7 +47,7 @@ public class FriendList extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_listview, friends); // simple textview for list item
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_listview, friends);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,7 +57,7 @@ public class FriendList extends AppCompatActivity {
                         + id);
                 GraphRequestAsyncTask graphRequestAsyncTask = new GraphRequest(
                         AccessToken.getCurrentAccessToken(),
-                        "/{user-id}/friends",
+                        "/{user-id}/groups",
                         null,
                         HttpMethod.GET,
                         new GraphRequest.Callback() {

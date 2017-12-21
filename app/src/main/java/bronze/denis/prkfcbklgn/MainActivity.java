@@ -40,17 +40,12 @@ public class MainActivity extends AppCompatActivity {
         getLoginDetails(loginButton);
     }
 
-    /*
-     * Register a callback function with LoginButton to respond to the login result.
-     */
     protected void getLoginDetails(LoginButton login_button){
-        // Callback registration
         login_button.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 GraphRequestAsyncTask graphRequestAsyncTask = new GraphRequest(
                         loginResult.getAccessToken(),
-                        //AccessToken.getCurrentAccessToken(),
                         "/me/friends",
                         null,
                         HttpMethod.GET,
@@ -72,12 +67,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-                // App code
             }
 
             @Override
             public void onError(FacebookException exception) {
-                // App code
             }
         });
     }
@@ -97,15 +90,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        // Logs 'install' and 'app activate' App Events.
         AppEventsLogger.activateApp(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-
-        // Logs 'app deactivate' App Event.
         AppEventsLogger.deactivateApp(this);
     }
 }
